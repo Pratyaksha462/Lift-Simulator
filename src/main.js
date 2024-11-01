@@ -241,32 +241,10 @@ document.addEventListener("liftIdle", () => {
  */
 
 // Add a new lift to the DOM and lift management system
-// function addLift() {
-//   const liftsScrollContainer = document.querySelector(".lifts-scroll-container");
-//   floors[floors.length - 1].append(getLiftEl()); // Append lift to the last floor
-//   liftEls = document.querySelectorAll(".lift-container");
-//   lifts.push({
-//     htmlEl: liftEls[liftEls.length - 1],
-//     busy: false,
-//     currFloor: 0,
-//   });
-//   leftDoors = document.querySelectorAll(".left-door");
-//   rightDoors = document.querySelectorAll(".right-door");
-
-//   // Disable adding more lifts if max limit is reached
-//   if(lifts.length >= getMaxLifts()) {
-//     console.log("Max lifts added");
-//     addLiftBtn.disabled = true;
-//     addLiftBtn.textContent = "Max lifts added";
-//     return;
-//   }
-// }
 function addLift() {
-  const liftsScrollContainer = document.querySelector(".lifts-scroll-container");
-  const newLift = getLiftEl();  // Create a new lift element
-  liftsScrollContainer.append(newLift);  // Append lift to the scroll container
-
-  liftEls = document.querySelectorAll(".lift-container");  // Update the list of lift elements
+ // const liftsScrollContainer = document.querySelector(".lifts-scroll-container");
+  floors[floors.length - 1].append(getLiftEl()); // Append lift to the last floor
+  liftEls = document.querySelectorAll(".lift-container");
   lifts.push({
     htmlEl: liftEls[liftEls.length - 1],
     busy: false,
@@ -274,7 +252,29 @@ function addLift() {
   });
   leftDoors = document.querySelectorAll(".left-door");
   rightDoors = document.querySelectorAll(".right-door");
+
+  // Disable adding more lifts if max limit is reached
+  // if(lifts.length >= getMaxLifts()) {
+  //   console.log("Max lifts added");
+  //   addLiftBtn.disabled = true;
+  //   addLiftBtn.textContent = "Max lifts added";
+  //   return;
+  // }
 }
+// function addLift() {
+//   const liftsScrollContainer = document.querySelector(".lifts-scroll-container");
+//   const newLift = getLiftEl();  // Create a new lift element
+//   liftsScrollContainer.append(newLift);  // Append lift to the scroll container
+
+//   liftEls = document.querySelectorAll(".lift-container");  // Update the list of lift elements
+//   lifts.push({
+//     htmlEl: liftEls[liftEls.length - 1],
+//     busy: false,
+//     currFloor: 0,
+//   });
+//   leftDoors = document.querySelectorAll(".left-door");
+//   rightDoors = document.querySelectorAll(".right-door");
+// }
 
 // Create a new lift element
 function getLiftEl() {
@@ -292,17 +292,6 @@ function getLiftEl() {
 
   return liftEL;
 }
-// function getLiftEl() {
-//   const liftEl = document.createElement("div");
-//   liftEl.classList.add("lift-container");
-
-//   liftEl.innerHTML = `
-//     <div class="left-door"></div>
-//     <div class="right-door"></div>
-//   `;
-
-//   return liftEl;
-// }
 
 
 // Add a new floor to the DOM
