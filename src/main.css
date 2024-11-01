@@ -76,27 +76,27 @@ main {
     padding: 10px;
 }
 
-/* .lift-container {
+.lift-container {
     position: inline-block;
     left: 30px;
     height: 100px;
     width: 70px;
     background-color: #374151;
     /* Updated to dark grey */
-    /* position: relative;
+     position: relative;
     z-index: 3;
     overflow: hidden;
-} */ 
-.lift-container {
+} 
+/*.lift-container {
     display: inline-block; /* Allows lifts to line up horizontally */
-    height: 100px;
+  /*  height: 100px;
     width: 70px;
     background-color: #374151; /* Dark grey color */
-    margin-right: 10px; /* Space between lifts */
-    position: relative; /* Keep relative positioning for door animations */
-    z-index: 3;
-    overflow: hidden;
-}
+  /*  margin-right: 10px; /* Space between lifts */
+ /*   position: relative; /* Keep relative positioning for door animations */
+    /* z-index: 3;
+    overflow: hidden; 
+}*/
 
 .left-door {
     position: absolute;
