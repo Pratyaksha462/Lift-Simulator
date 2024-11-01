@@ -64,26 +64,29 @@ header {
     padding: 3rem;
 } */
 main {
-    display: flex;
+    /* display: flex;
     overflow-x: auto;
-    white-space: nowrap;
+    white-space: nowrap; */
     padding: 3rem;
 }
 .lifts-scroll-container {
+    position: absolute; /* Allows it to float across all floors */
+    top: 0; /* Position at the top of the screen */
+    left: 50px; /* Adjust left position as needed */
+    width: 100%; /* Full width for the lifts to scroll */
+    height: 100%; /* Full height to allow lift movement across floors */
     display: flex;
     overflow-x: auto;
-    white-space: nowrap;
-    padding: 10px;
+    z-index: 10; /* Higher z-index to stay in front of floors */
 }
 
 .lift-container {
-    position: inline-block;
-    left: 30px;
+    margin:10px;
     height: 100px;
     width: 70px;
     background-color: #374151;
     /* Updated to dark grey */
-     position: relative;
+    position: relative;
     z-index: 3;
     overflow: hidden;
 } 
