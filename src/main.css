@@ -72,12 +72,9 @@ main {
 
 .lift-container {
     position: absolute;
-    min-width: 120px; /* Adjust as needed */
-    margin-right: 10px;
-    position: relative;
-    /* left: 30px;
+    left: 30px;
     height: 100px;
-    width: 70px; */
+    width: 70px;
     background-color: #374151;
     /* Updated to dark grey */
     position: relative;
