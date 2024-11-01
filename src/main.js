@@ -7,7 +7,6 @@ let leftDoors = document.querySelectorAll(".left-door");
 let rightDoors = document.querySelectorAll(".right-door");
 const floorsContainer = document.querySelector(".floors");
 let floors = document.querySelectorAll(".floor");
-let requestedFloors = {};  // Add this line to track active floor requests
 
 // Queue class to handle the list of lift requests
 class Queue {
@@ -107,26 +106,15 @@ const getMaxLifts = () => {
   return Math.floor(((viewportwidth - 100)/120)); // Each lift takes 120px width with some padding
 };
 
-// // Call a lift to the requested floor
-// const callLift = () => {
-//   const { lift, index } = getClosestEmptyLift(requests.peek());
-
-//   if (index >= 0) {
-//     lifts[index].busy = true; // Mark lift as busy
-//     moveLift(lift.htmlEl, requests.dequeue(), index); // Move the lift to the requested floor
-//   }
-// };
+// Call a lift to the requested floor
 const callLift = () => {
   const { lift, index } = getClosestEmptyLift(requests.peek());
 
   if (index >= 0) {
-    lifts[index].busy = true;
-    const requestedFloor = requests.dequeue();
-    moveLift(lift.htmlEl, requestedFloor, index);
-    requestedFloors[requestedFloor] = false;  // Reset floor request after assigning a lift
+    lifts[index].busy = true; // Mark lift as busy
+    moveLift(lift.htmlEl, requests.dequeue(), index); // Move the lift to the requested floor
   }
 };
-
 
 /**
  * LIFT ACTIONS -> animations: open, close, move up, down.
@@ -185,16 +173,9 @@ const moveLift = (lift, destFloor, index) => {
  */
 
 // Add a floor request to the queue
-// function addRequest(destFloor) {
-//   requests.enqueue(destFloor);
-//   dispatchRequestAdded(); // Trigger 'requestAdded' event
-// }
 function addRequest(destFloor) {
-  if (!requestedFloors[destFloor]) {  // Only enqueue if no active request for the floor
-    requests.enqueue(destFloor);
-    requestedFloors[destFloor] = true;  // Mark the floor as requested
-    dispatchRequestAdded();  // Trigger event
-  }
+  requests.enqueue(destFloor);
+  dispatchRequestAdded(); // Trigger 'requestAdded' event
 }
 
 // Remove the first request from the queue
@@ -242,7 +223,6 @@ document.addEventListener("liftIdle", () => {
 
 // Add a new lift to the DOM and lift management system
 function addLift() {
- // const liftsScrollContainer = document.querySelector(".lifts-scroll-container");
   floors[floors.length - 1].append(getLiftEl()); // Append lift to the last floor
   liftEls = document.querySelectorAll(".lift-container");
   lifts.push({
@@ -261,20 +241,6 @@ function addLift() {
   //   return;
   // }
 }
-// function addLift() {
-//   const liftsScrollContainer = document.querySelector(".lifts-scroll-container");
-//   const newLift = getLiftEl();  // Create a new lift element
-//   liftsScrollContainer.append(newLift);  // Append lift to the scroll container
-
-//   liftEls = document.querySelectorAll(".lift-container");  // Update the list of lift elements
-//   lifts.push({
-//     htmlEl: liftEls[liftEls.length - 1],
-//     busy: false,
-//     currFloor: 0,
-//   });
-//   leftDoors = document.querySelectorAll(".left-door");
-//   rightDoors = document.querySelectorAll(".right-door");
-// }
 
 // Create a new lift element
 function getLiftEl() {
@@ -292,7 +258,6 @@ function getLiftEl() {
 
   return liftEL;
 }
-
 
 // Add a new floor to the DOM
 function addFloor() {
