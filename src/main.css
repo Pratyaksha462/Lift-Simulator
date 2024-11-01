@@ -60,24 +60,40 @@ header {
   * Lift style
   */
 
+/* main {
+    padding: 3rem;
+} */
 main {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
     padding: 3rem;
 }
 .lifts-scroll-container {
     display: flex;
     overflow-x: auto;
-    width: 100%;
+    white-space: nowrap;
     padding: 10px;
 }
 
-.lift-container {
-    position: absolute;
+/* .lift-container {
+    position: inline-block;
     left: 30px;
     height: 100px;
     width: 70px;
     background-color: #374151;
     /* Updated to dark grey */
-    position: relative;
+    /* position: relative;
+    z-index: 3;
+    overflow: hidden;
+} */ 
+.lift-container {
+    display: inline-block; /* Allows lifts to line up horizontally */
+    height: 100px;
+    width: 70px;
+    background-color: #374151; /* Dark grey color */
+    margin-right: 10px; /* Space between lifts */
+    position: relative; /* Keep relative positioning for door animations */
     z-index: 3;
     overflow: hidden;
 }
