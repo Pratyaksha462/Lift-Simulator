@@ -277,32 +277,32 @@ function addLift() {
 }
 
 // Create a new lift element
-// function getLiftEl() {
-//   const liftDistance = (lifts.length + 1) * 120;
-
-//   const liftEL = document.createElement("div");
-//   liftEL.classList.add("lift-container");
-//   liftEL.style.position = "absolute";
-//   liftEL.style.left = `${liftDistance}px`;
-
-//   liftEL.innerHTML += `
-//             <div class="left-door"></div>
-//             <div class="right-door"></div>
-//         `;
-
-//   return liftEL;
-// }
 function getLiftEl() {
-  const liftEl = document.createElement("div");
-  liftEl.classList.add("lift-container");
+  const liftDistance = (lifts.length + 1) * 120;
 
-  liftEl.innerHTML = `
-    <div class="left-door"></div>
-    <div class="right-door"></div>
-  `;
+  const liftEL = document.createElement("div");
+  liftEL.classList.add("lift-container");
+  liftEL.style.position = "absolute";
+  liftEL.style.left = `${liftDistance}px`;
 
-  return liftEl;
+  liftEL.innerHTML += `
+            <div class="left-door"></div>
+            <div class="right-door"></div>
+        `;
+
+  return liftEL;
 }
+// function getLiftEl() {
+//   const liftEl = document.createElement("div");
+//   liftEl.classList.add("lift-container");
+
+//   liftEl.innerHTML = `
+//     <div class="left-door"></div>
+//     <div class="right-door"></div>
+//   `;
+
+//   return liftEl;
+// }
 
 
 // Add a new floor to the DOM
